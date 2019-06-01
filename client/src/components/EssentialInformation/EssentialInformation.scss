@@ -1,0 +1,251 @@
+// Colors
+$primary-color: #383838;
+$background-white: #fff;
+$dark-grey: #c3baba;
+$light-grey: #e3e3e3;
+$button-black: #000000;
+
+// Links 
+%links-shared {
+  text-decoration: none;
+
+  &:link {
+    color: $primary-color;
+  }
+  
+  &:visited {
+    color: $primary-color;
+  }
+
+  &:hover {
+    margin-bottom: 0;
+    border-bottom: 2px solid $primary-color;
+  }
+}
+
+// DropDowns
+%dropDown-shared {
+  width: 100%;
+  display: flex;
+  padding: 10px 15px;
+  cursor: pointer;
+  box-shadow: 0 0 5px 1px $light-grey;
+  background: $background-white;
+}
+
+%dropDown-shared-hover {
+  &:hover {
+    margin-bottom: 0;
+    border-bottom: 3px solid $dark-grey;
+  };
+}
+
+.essentialInformationContainer {
+  height: 810px;
+  width: 300px;
+  left: 300px;
+  margin: 0;
+  flex: none;
+  color: $primary-color;
+  font-family: 'Brandon Text', Georgia, Normal;
+  font-weight: 400;
+  line-height: 1.4;
+  font-size: 13px;
+}
+
+.starsContainer {
+  margin-right: 7px;
+}
+
+.productNameContainer {
+  margin-bottom: 3px;
+
+  .productName {
+    margin: 0;
+    font-weight: 400;
+    font-size: 19px;
+  }
+}
+
+.designerContainer {
+  margin-top: 3px;
+
+  .designerLink {
+    @extend %links-shared;
+    border-bottom: 2px solid $background-white;
+  }
+}
+
+.priceContainer {
+  margin-top: 20px;
+
+  .price {
+    font-weight: 700;
+    font-size: 15px;
+  }
+}
+
+.descriptionContainer {
+  margin-top: 30px;
+}
+
+.fitContainer {
+  margin-top: 40px;
+  margin-bottom: 5px;
+
+  .fit {
+    font-weight: 700;
+    margin-right: 5px;
+  }
+}
+
+
+.dropDownMainContainer {
+  margin-bottom: 15px;
+  display: flex;
+  position: relative;
+  
+}
+
+.dropDownContainerMainTitle {
+  @extend %dropDown-shared;
+  margin-bottom: 2px;  
+  border-bottom: 1px solid $light-grey;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.dropDownContainer {
+  width: 100%;
+  position: absolute;
+  z-index: 1; 
+}
+
+.dropDownContainerBox {
+  @extend %dropDown-shared;
+  @extend %dropDown-shared-hover;
+  margin-bottom: 2px;  
+  border-bottom: 1px solid $light-grey;
+}
+
+.selectedBox {
+  @extend %dropDown-shared;
+  border-bottom: 3px solid $primary-color;
+}
+
+.carrot {
+  margin-left: auto;
+}
+
+.sizeGuideContainer {
+  margin-top: 3px;
+  margin-bottom: 12px;
+  display: flex;
+
+  .sizeGuideLink {
+    @extend %links-shared;
+    margin-left: auto;
+    border-bottom: 1px solid $primary-color;
+    margin-bottom: 1px;
+  }
+}
+
+.colorSelectorImage {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 3px solid $background-white;
+  box-shadow: 0 0 0 1px $light-grey;
+
+  &:hover{
+    box-shadow: 0 0 0 2px $dark-grey;
+    transition: box-shadow .2s;
+  }
+}
+
+.dropDownColorContainerBox {
+  @extend %dropDown-shared;
+  @extend %dropDown-shared-hover;
+  padding: 10px 15px;
+}
+
+.colorSelectedImage {
+  box-shadow: 0 0 0 2px $primary-color;
+}
+
+.colorText {
+  margin-top: 5px;
+}
+
+.colorContainer {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.quantity {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  outline-offset: -2px;
+  outline: 2px solid transparent;
+  border: 1px solid $dark-grey;
+
+  &:hover {
+    transition: box-shadow .2s;
+    box-shadow: 0 0 0 2px $primary-color;
+  }
+}
+
+.bagContainer {
+  margin-top: 40px;
+}
+
+.button {
+  height: 40px;
+  width: 100%;
+  background: $button-black;
+  color: $background-white;
+  cursor: pointer;
+
+  &:hover{
+    background: #333333;
+  }
+}
+
+.wishListContainer {
+  margin-top: 12px;
+
+  .wishListLink {
+    @extend %links-shared;
+    border-bottom: 1px solid $primary-color;
+    margin-bottom: 1px;
+  }
+}
+
+
+.buyContainer {
+  margin: 20px 0 5px;
+
+  .buy {
+    font-weight: 700;
+  }
+}
+
+.availabilityContainer {
+  margin: 0 0 15px 0;
+}
+
+.zipAndButtonContainer {
+  display: flex;
+  
+  .zipCode {
+    height: 40px;
+    min-width: 130px;
+    margin-right: 10px;
+    border: 1px solid $dark-grey;
+    padding: 0 14px;
+  }
+}

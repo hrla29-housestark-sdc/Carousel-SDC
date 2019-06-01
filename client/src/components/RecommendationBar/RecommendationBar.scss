@@ -1,0 +1,55 @@
+// Colors
+$primary-color: #393939;
+
+.recommendationBarContainer {
+  right: 50px;
+  width: 88px;
+  position: absolute;
+}
+
+.titleText {
+  margin-top: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.dressListContainer {
+  padding: 0;
+  width: 82px;
+  text-align: center;
+  list-style: none;
+  line-height: 1.4;
+  font-size: 13px;
+}
+
+.dressDescriptionContainer {
+  margin-top: 16px;
+}
+
+.link {
+  text-decoration: none;
+
+  &:link {
+    color: $primary-color;
+  }
+  
+  &:visited {
+    color: $primary-color;
+  }
+
+}
+
+.dressImage {
+  height: auto;
+  max-width: 100%;
+}
+
+.designerText {
+  font-weight: 400;
+}
+
+.dressPrice {
+  font-weight:700;
+  
+}

@@ -1,0 +1,89 @@
+// Colors
+$primary-color: #383838;
+$background-white: #fff;
+$dark-grey: #c3baba;
+
+// Arrow SVG
+%arrow-shared {
+  width: 100%;
+  margin: 0 auto;
+  left: 25%;
+  z-index: 2;
+  position: absolute;
+  cursor: pointer;
+}
+
+.imageCarouselContainer {
+  height: calc(100vh - 240.094px);
+  width: calc(100% - 450px);
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.carouselContainer {
+  height: 545px;
+  width: 60px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.arrowAndPhotoContainer {
+  height: 505px;
+  width: 60px;
+  flex-wrap: wrap;
+}
+
+.carouselPhotoContainer {
+  margin: 10px 0;
+  white-space: nowrap;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.arrowUpSVGContainer {
+  @extend %arrow-shared;
+  top: 0;
+}
+
+.arrowDownSVGContainer {
+  @extend %arrow-shared;
+  bottom: 10px;
+}
+
+.carouselImage {
+  height: auto;
+  width: 100%;
+  border-bottom:3px solid $background-white;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  display: block;
+  cursor: pointer;
+
+  &:hover{
+    border-bottom: 3px solid $dark-grey;
+    transition: border-bottom .2s;
+  }
+}
+
+.selectedBorder {
+  border-Bottom: 3px solid $primary-color
+}
+
+.mainImageContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.mainImage {
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+  align-self: center;
+}
