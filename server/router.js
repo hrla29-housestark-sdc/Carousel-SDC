@@ -4,7 +4,7 @@ const controller = require('./controller');
 // Fetch or delete all data 
 router.route('/allDocs')
   .get(controller.findAll)
-  .delete(controller.deleteAll);
+  .delete(controller.deleteAll)
 
 // Fetch one dress randomly
 router.route('/findOneRandom')

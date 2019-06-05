@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 const router = require('./router');
+const db = require('../database/index');
 
 // Creating server and port number
 const app = express();
