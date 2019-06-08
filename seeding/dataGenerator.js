@@ -30,6 +30,13 @@ const seedData = () => {
   // Static size Array
   var sizes = ['XX-Small', 'X-Small', 'Small', 'Medium', 'Large'];
 
+  imageUrlsColor1 = imageUrlsColor1.slice(0, 2);
+  imageUrlsColor2 = imageUrlsColor2.slice(0, 2);
+
+  //***********************************************
+  //UNCOMMENT BELOW IF WRITING TO CSV
+  //*********************************************** 
+
   sizes = sizes.join();
   colors = colors.join();
   imageUrlsColor1 = imageUrlsColor1.join();
@@ -38,15 +45,15 @@ const seedData = () => {
   var createdAt = null;
   var updatedAt = null;
   
-  return { productName, designer, price, stars, reviews, description, fit, sizes, colors, imageUrlsColor1, imageUrlsColor2, createdAt, updatedAt }
+  return { productName, designer, price, stars, reviews, description, fit, sizes, colors, imageUrlsColor1, imageUrlsColor2 , createdAt, updatedAt }
 }
 
 // Fills main data array with x number of documents
-const documentsTotal = 500000
-const mainDataArray = [];
-for (let i = 0; i < documentsTotal; i++) {
-  mainDataArray.push(seedData());
-}
+// const documentsTotal = 500000
+// const mainDataArray = [];
+// for (let i = 0; i < documentsTotal; i++) {
+//   mainDataArray.push(seedData());
+// }
 
 // Seeder function creating documents in the DBMS
 // const seeder = () => {
@@ -60,8 +67,78 @@ for (let i = 0; i < documentsTotal; i++) {
 // seeder();
 
 
+
+// const ws = fs.createWriteStream('data.json', {flags: 'w'});
+
+// function writeTenMillionTimes(writer, data, encoding, callback) {
+//   let i = 10000000;
+//   writer.write('[', encoding);
+//   write();
+//   function write() {
+//     let ok = true;
+//     do {
+//       i--;
+//       if (i === 0) {
+//         // last time!
+//         data = seedData();
+//         writer.write(`${JSON.stringify(data, null, 2)}]`, encoding, callback);
+//       } else {
+//         // See if we should continue, or wait.
+//         // Don't pass the callback, because we're not done yet.
+//         data = seedData();
+//         ok = writer.write(`${JSON.stringify(data, null, 2)}, \n`, encoding);
+//       }
+//     } while (i > 0 && ok);
+//     if (i > 0) {
+//       // had to stop early!
+//       // write some more once it drains
+//       writer.once('drain', write);
+//     }
+//   }
+// }
+
+// writeTenMillionTimes(ws, null, 'utf8', () => {
+//   console.log('completed writing one million times')
+// });
+
+//********************************************
+//UNCOMMENT BELOW FOR WRITING TO CSV FILE
+//******************************************** 
+
 const ws = fs.createWriteStream('data.csv', {flags: 'a'}); 
 
-fastcsv  
-  .write(mainDataArray)
-  .pipe(ws);
+// fastcsv  
+//   .write(mainDataArray, {includeEndRowDelimiter: true})
+//   .pipe(ws);
+
+function writeFiveTimes(writer, data, encoding, callback) {
+  let i = 10000001;
+  write();
+  function write() {
+    let ok = true;
+    do {
+      i--;
+      if (i === 0) {
+        // last time!
+        data = seedData();
+        data = Object.values(data).join('|');
+        writer.write(data, encoding, callback);
+      } else {
+        // See if we should continue, or wait.
+        // Don't pass the callback, because we're not done yet.
+        data = seedData();
+        data = Object.values(data).join('|') + '\n';
+        ok = writer.write(data, encoding);
+      }
+    } while (i > 0 && ok);
+    if (i > 0) {
+      // had to stop early!
+      // write some more once it drains
+      writer.once('drain', write);
+    }
+  }
+}
+
+writeFiveTimes(ws, null, 'utf8', () => {
+  console.log('completed writing 5000 times')
+});
