@@ -3,6 +3,7 @@ const db = require('./index');
 
 // Product Description Schema
 const productDescriptionSchema = new mongoose.Schema({
+  ID: Number,
   productName: String,
   designer: String,
   price: Number,

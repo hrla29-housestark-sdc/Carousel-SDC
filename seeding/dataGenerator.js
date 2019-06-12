@@ -1,7 +1,6 @@
 //const mongoose = require('mongoose');
-const Product = require('../database/models');
+//const Product = require('../database/models');
 const dressData = require('./dressData.json');
-const fastcsv = require('fast-csv');  
 const fs = require('fs');  
 
 
@@ -45,7 +44,7 @@ const seedData = () => {
   var createdAt = null;
   var updatedAt = null;
   
-  return { productName, designer, price, stars, reviews, description, fit, sizes, colors, imageUrlsColor1, imageUrlsColor2 , createdAt, updatedAt }
+  return { productName, designer, price, stars, reviews, description, fit, sizes, colors, imageUrlsColor1, imageUrlsColor2, createdAt, updatedAt }
 }
 
 // Fills main data array with x number of documents
@@ -73,6 +72,7 @@ const seedData = () => {
 // function writeTenMillionTimes(writer, data, encoding, callback) {
 //   let i = 10000000;
 //   writer.write('[', encoding);
+//   counter = 1;
 //   write();
 //   function write() {
 //     let ok = true;
@@ -81,11 +81,14 @@ const seedData = () => {
 //       if (i === 0) {
 //         // last time!
 //         data = seedData();
+//         data.ID = counter;
 //         writer.write(`${JSON.stringify(data, null, 2)}]`, encoding, callback);
 //       } else {
 //         // See if we should continue, or wait.
 //         // Don't pass the callback, because we're not done yet.
 //         data = seedData();
+//         data.ID = counter;
+//         counter++;
 //         ok = writer.write(`${JSON.stringify(data, null, 2)}, \n`, encoding);
 //       }
 //     } while (i > 0 && ok);
@@ -107,11 +110,8 @@ const seedData = () => {
 
 const ws = fs.createWriteStream('data.csv', {flags: 'a'}); 
 
-// fastcsv  
-//   .write(mainDataArray, {includeEndRowDelimiter: true})
-//   .pipe(ws);
 
-function writeFiveTimes(writer, data, encoding, callback) {
+function writeTenMillionTimes(writer, data, encoding, callback) {
   let i = 10000001;
   write();
   function write() {
@@ -139,6 +139,6 @@ function writeFiveTimes(writer, data, encoding, callback) {
   }
 }
 
-writeFiveTimes(ws, null, 'utf8', () => {
-  console.log('completed writing 5000 times')
+writeTenMillionTimes(ws, null, 'utf8', () => {
+  console.log('completed writing 10000000 times')
 });
