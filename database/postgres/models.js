@@ -29,8 +29,8 @@
 // const Sequelize = require('sequelize');
 // const db = require('./index');
 
-// const Product = db.define('product', {
-//   productName: { type: Sequelize.STRING },
+// const Product = db.define('products', {
+//   product_name: { type: Sequelize.STRING },
 //   designer: { type: Sequelize.STRING },
 //   price: { type: Sequelize.FLOAT },
 //   stars: { type: Sequelize.FLOAT },
@@ -39,11 +39,8 @@
 //   fit: { type: Sequelize.STRING },
 //   sizes: { type: Sequelize.STRING },
 //   colors: { type: Sequelize.STRING },
-//   imageUrlsColor1: { type: Sequelize.STRING(2000) },
-//   imageUrlsColor2: { type: Sequelize.STRING(2000) },
-//   createdAt: { type: Sequelize.DATE() },
-//   updatedAt: { type: Sequelize.DATE() }
-  
+//   image_urls_color1: { type: Sequelize.STRING(2000) },
+//   image_urls_color2: { type: Sequelize.STRING(2000) },
 // })
 
 // db.sync();
@@ -54,12 +51,15 @@ const { Client } = require('pg')
 const db = require('./index');
 
 const client = new Client({
-  user: '',
-  host: 'localhost',
+  user: 'ubuntu',
+  host: 'ec2-18-222-125-220.us-east-2.compute.amazonaws.com',
   database: 'productdescription',
-  password: '',
+  password: 'password',
+  port: 5432
 })
 
 client.connect()
+  .then(() => console.log('successful connection to db instance'))
+  .catch(err => console.log('error connecting to db instance', err))
 
 module.exports = client;

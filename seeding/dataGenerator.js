@@ -14,11 +14,11 @@ const seedData = () => {
   const dressDataRandomInt = Math.floor(Math.random() * dressData.length);
   
   // Grabs the data object from the json array
-  const productName = dressData[dressDataRandomInt].productName;
+  const product_name = dressData[dressDataRandomInt].productName;
   const description = dressData[dressDataRandomInt].description;
   var colors = dressData[dressDataRandomInt].colors;
-  var imageUrlsColor1 = dressData[dressDataRandomInt].imageUrlsColor1;
-  var imageUrlsColor2 = dressData[dressDataRandomInt].imageUrlsColor2;
+  var image_urls_color1 = dressData[dressDataRandomInt].imageUrlsColor1;
+  var image_urls_color2 = dressData[dressDataRandomInt].imageUrlsColor2;
   // Grabs the data from the Random Data Array
   const designer = designers[Math.floor(Math.random() * 11)];
   const fit = fits[Math.floor(Math.random() * 3)];
@@ -29,8 +29,8 @@ const seedData = () => {
   // Static size Array
   var sizes = ['XX-Small', 'X-Small', 'Small', 'Medium', 'Large'];
 
-  imageUrlsColor1 = imageUrlsColor1.slice(0, 2);
-  imageUrlsColor2 = imageUrlsColor2.slice(0, 2);
+  image_urls_color1 = image_urls_color1.slice(0, 2);
+  image_urls_color2 = image_urls_color2.slice(0, 2);
 
   //***********************************************
   //UNCOMMENT BELOW IF WRITING TO CSV
@@ -38,13 +38,10 @@ const seedData = () => {
 
   sizes = sizes.join();
   colors = colors.join();
-  imageUrlsColor1 = imageUrlsColor1.join();
-  imageUrlsColor2 = imageUrlsColor2.join();
+  image_urls_color1 = image_urls_color1.join();
+  image_urls_color2 = image_urls_color2.join();
   
-  var createdAt = null;
-  var updatedAt = null;
-  
-  return { productName, designer, price, stars, reviews, description, fit, sizes, colors, imageUrlsColor1, imageUrlsColor2, createdAt, updatedAt }
+  return { product_name, designer, price, stars, reviews, description, fit, sizes, colors, image_urls_color1, image_urls_color2 }
 }
 
 // Fills main data array with x number of documents

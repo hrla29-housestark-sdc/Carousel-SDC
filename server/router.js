@@ -4,7 +4,7 @@ const controller = require('./controller');
 // Fetch or delete all data 
 router.route('/allDocsMongo')
   .get(controller.mongodb.findOne)
-  .post(controller.mongodb.postToProducts)
+  //.post(controller.mongodb.postToProducts)
   //.delete(controller.deleteAll)
 //   .delete(controller.deleteAll)
 

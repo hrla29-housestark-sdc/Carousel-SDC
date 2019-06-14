@@ -1,11 +1,10 @@
-//const express = require('express');
-const cluster = require('cluster');
 const bodyParser = require('body-parser');
 const path = require('path');
 const router = require('./router');
 //const morgan = require('morgan');
 const mongo = require('../database/mongodb/index');
-const postgres = require('../database/postgres/index');
+const postgres = require('../database/postgres/models');
+const postgresDB = require('../database/postgres/index');
 
 
 // if (cluster.isMaster) {
@@ -40,6 +39,7 @@ const postgres = require('../database/postgres/index');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3002;
+
 
 // Middleware
 //app.use(morgan('dev'));
