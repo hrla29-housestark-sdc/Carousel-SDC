@@ -44,37 +44,37 @@
 
 // module.exports = sequelize;
 
-const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
+// // Connection URL
+// const url = 'mongodb://localhost:27017';
 
-// Database Name
-const dbName = 'productDescription';
+// // Database Name
+// const dbName = 'productDescription';
 
-var _db;
+// var _db;
 
-// Use connect method to connect to the server
+// // Use connect method to connect to the server
 
-MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
+// MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
   
-  console.log("Connected successfully to mongo database");
+//   console.log("Connected successfully to mongo database");
 
-  _db = client.db(dbName);
+//   _db = client.db(dbName);
 
-})
+// })
 
 
-var dbHelpers = (randomId) => {
-  return new Promise ((resolve, reject) => {
-    _db.collection('productdescriptions').findOne({ ID: randomId}, (err, items) => {
-      if(err){
-        reject({hello: 'hello world', ...err})
-      } else{
-        resolve(items)
-      }
-    })
-  })
-}
+// var dbHelpers = (randomId) => {
+//   return new Promise ((resolve, reject) => {
+//     _db.collection('productdescriptions').findOne({ ID: randomId}, (err, items) => {
+//       if(err){
+//         reject({hello: 'hello world', ...err})
+//       } else{
+//         resolve(items)
+//       }
+//     })
+//   })
+// }
 
-module.exports.get = dbHelpers;
+// module.exports.get = dbHelpers;

@@ -2,9 +2,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const router = require('./router');
 //const morgan = require('morgan');
-const mongo = require('../database/mongodb/index');
 const postgres = require('../database/postgres/models');
-const postgresDB = require('../database/postgres/index');
 
 
 // if (cluster.isMaster) {
