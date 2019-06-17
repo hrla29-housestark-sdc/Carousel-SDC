@@ -2,7 +2,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const router = require('./router');
 //const morgan = require('morgan');
-const postgres = require('../database/postgres/models');
+require('../database/postgres/models');
+require('newrelic');
 
 
 // if (cluster.isMaster) {

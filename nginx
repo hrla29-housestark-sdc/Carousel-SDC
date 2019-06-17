@@ -1,4 +1,4 @@
-worker_processes 1;
+worker_processes 2;
 
 events {
   worker_connections 1024;
@@ -6,13 +6,16 @@ events {
 
 http {
   upstream myprojects{
-    server ec2.something.com;
-    server ec2.somethingelse.com;
+    server ec2-18-191-232-12.us-east-2.compute.amazonaws.com:3002;
+    server ec2-18-222-29-198.us-east-2.compute.amazonaws.com:3002;
   }
   server {
     listen 80;
     location / {
-        proxy_pass http://myprojects;
+      proxy_pass http://myprojects;
+    }
+    location /loaderio-ae3df0e2657c6fc8701f0059cfd8eb3f {
+      return 200 'loaderio-ae3df0e2657c6fc8701f0059cfd8eb3f'
     }
   }
 }
