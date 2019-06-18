@@ -52,7 +52,7 @@ const db = require('./index');
 
 const client = new Client({
   user: 'ubuntu',
-  host: 'ec2-18-222-125-220.us-east-2.compute.amazonaws.com',
+  host: 'ec2-18-218-45-85.us-east-2.compute.amazonaws.com',
   database: 'productdescription',
   password: 'password',
   port: 5432
