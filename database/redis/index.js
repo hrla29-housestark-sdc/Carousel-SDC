@@ -1,8 +1,8 @@
-var redis = require('redis');
-var client = redis.createClient();
+// var redis = require('redis');
+// var client = redis.createClient();
 
-client.on('connect', function() {
-  console.log('connected to redis');
-});
+// client.on('connect', function() {
+//   console.log('connected to redis');
+// });
 
-module.exports = client;
+// module.exports = client;
