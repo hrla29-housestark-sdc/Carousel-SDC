@@ -74,21 +74,28 @@ module.exports = {
     // }
     test: (req, res) => {
       const random = Math.round(Math.random() * (10000000 - 9000000) + 9000000);
-      redis.get(9000000, (err, reply) => {
-        if(!reply){
-          pg.query(`SELECT * FROM products WHERE id = 9000000`, (err, data) => {
-            if(err){
-              res.status(404).send(err)
-            } else{
-              redis.set(data.rows[0].id, JSON.stringify(data.rows[0]), (err, reply) => {
-                res.status(200).send(data.rows[0])
-              });
-            }
-          })   
+      // redis.get(9000000, (err, reply) => {
+      //   if(!reply){
+      //     pg.query(`SELECT * FROM products WHERE id = 9000000`, (err, data) => {
+      //       if(err){
+      //         res.status(404).send(err)
+      //       } else{
+      //         redis.set(data.rows[0].id, JSON.stringify(data.rows[0]), (err, reply) => {
+      //           res.status(200).send(data.rows[0])
+      //         });
+      //       }
+      //     })   
+      //   } else{
+      //     res.status(200).send(JSON.parse(reply));
+      //   }
+      // })
+      pg.query(`SELECT * FROM products WHERE id = ${random}`, (err, data) => {
+        if(err){
+          res.status(404).send(err)
         } else{
-          res.status(200).send(JSON.parse(reply));
+          res.status(200).send(data.rows[0])
         }
-      })
+      }) 
     }
   },
   //currently mongoose
