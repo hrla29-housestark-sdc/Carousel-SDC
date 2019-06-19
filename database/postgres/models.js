@@ -47,10 +47,10 @@
 
 // module.exports = Product;
 
-const { Client } = require('pg')
+const { Pool } = require('pg')
 const db = require('./index');
 
-const client = new Client({
+const pool = new Pool({
   user: 'ubuntu',
   host: 'ec2-18-218-45-85.us-east-2.compute.amazonaws.com',
   database: 'productdescription',
@@ -58,8 +58,8 @@ const client = new Client({
   port: 5432
 })
 
-client.connect()
-  .then(() => console.log('successful connection to db instance'))
+pool.connect()
+  .then(() => console.log('connected to postgres'))
   .catch(err => console.log('error connecting to db instance', err))
 
-module.exports = client;
+module.exports = pool;

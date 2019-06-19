@@ -3,6 +3,7 @@ const path = require('path');
 const router = require('./router');
 //const morgan = require('morgan');
 require('../database/postgres/models');
+require('../database/redis/index');
 
 
 // if (cluster.isMaster) {
@@ -37,7 +38,6 @@ require('../database/postgres/models');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3002;
-
 
 // Middleware
 //app.use(morgan('dev'));

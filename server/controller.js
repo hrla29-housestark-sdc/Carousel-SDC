@@ -1,6 +1,8 @@
-const client = require('../database/postgres/models');
+const pg = require('../database/postgres/models');
 const db = require('../database/mongodb/index');
-const dressData = require('../seeding/dressData.json');
+const redis = require('../database/redis/index');
+
+
 
 // const Sequelize = require('sequelize');
 // const Op = Sequelize.Op;
@@ -72,13 +74,19 @@ module.exports = {
     // }
     test: (req, res) => {
       const random = Math.round(Math.random() * (10000000 - 9000000) + 9000000);
-      client.query(`SELECT * FROM products WHERE id = ${random}`, (err, data) => {
-        // console.log(err, res)
-        // client.end()
-        if(err){
-          res.status(404).send(err)
+      redis.get(9000000, (err, reply) => {
+        if(!reply){
+          pg.query(`SELECT * FROM products WHERE id = 9000000`, (err, data) => {
+            if(err){
+              res.status(404).send(err)
+            } else{
+              redis.set(data.rows[0].id, JSON.stringify(data.rows[0]), (err, reply) => {
+                res.status(200).send(data.rows[0])
+              });
+            }
+          })   
         } else{
-          res.status(200).send(data.rows[0])
+          res.status(200).send(JSON.parse(reply));
         }
       })
     }
