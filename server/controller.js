@@ -73,7 +73,7 @@ module.exports = {
     //     .catch(err => res.status(404).send('error psql.findOne'))
     // }
     test: (req, res) => {
-      const random = Math.round(Math.random() * (10000000 - 9000000) + 9000000);
+      const random = Math.round(Math.random() * (10000000 - 9900000) + 9900000);
       // redis.get(9000000, (err, reply) => {
       //   if(!reply){
       //     pg.query(`SELECT * FROM products WHERE id = 9000000`, (err, data) => {
