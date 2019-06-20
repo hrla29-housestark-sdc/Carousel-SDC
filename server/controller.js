@@ -89,7 +89,7 @@ module.exports = {
       //     res.status(200).send(JSON.parse(reply));
       //   }
       // })
-      pg.query(`SELECT * FROM products WHERE id = 10000`, (err, data) => {
+      pg.query(`SELECT * FROM products WHERE id = ${random}`, (err, data) => {
         if(err){
           res.status(404).send(err)
         } else{
