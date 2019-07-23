@@ -20,8 +20,12 @@ module.exports = {
     //     .then(data => res.status(200).send(data))
     //     .catch(err => res.status(404).send('error psql.findOne'))
     // }
+
+    /*******************************************/
+    /*******TESTS LAST 1,000 ENTRIES************/
+    /*******************************************/
+
     findOne: (req, res) => {
-      //last 1000 entries chosen to test caching
       const random = Math.round(Math.random() * (10000000 - 9999000) + 9999000);
       pg.query(`SELECT * FROM products WHERE id = ${random}`, (err, data) => {
         if(err){
