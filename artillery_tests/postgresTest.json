@@ -1,0 +1,21 @@
+{
+  "config": {
+      "target": "http://localhost:3002",
+      "phases": [
+        { "duration": 20, "arrivalRate": 500 }
+      ],
+      "defaults": {
+        "headers": {
+          "content-type": "application/json",
+          "x-my-service-auth": "987401838271002188298567"
+        }
+      }
+  },
+  "scenarios": [
+    {
+      "flow": [
+        { "get": {"url": "/productDescription/allDocsPgsql"}}
+      ]
+    }
+  ]
+}
