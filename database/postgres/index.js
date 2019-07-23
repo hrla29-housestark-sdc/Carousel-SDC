@@ -1,26 +1,19 @@
-// const mongoose = require('mongoose');
-// // require('dotenv').config();
+const { Pool } = require('pg')
+const db = require('./index');
 
-// // let DB_URL = (process.env.NODE_ENV === 'development') ? 'mongodb://localhost/productDescription' : `mongodb+srv://matthewmata1030:${process.env.DB_PW}@cluster0-esl5a.mongodb.net/test?retryWrites=true&w=majority`
-// // console.log(DB_URL)
-// // // Connecting our local storage db to our application with the db name productDescription
-// // const db = mongoose.connect(DB_URL, {useNewUrlParser: true});
+const pool = new Pool({
+  user: 'ubuntu',
+  host: 'ec2-18-218-45-85.us-east-2.compute.amazonaws.com',
+  database: 'productdescription',
+  password: 'password',
+  port: 5432
+})
 
-// mongoose.connect('mongodb://localhost/productDescription', {useNewUrlParser: true});
+pool.connect()
+  .then(() => console.log('connected to postgres'))
+  .catch(err => console.log('error connecting to db instance', err))
 
-// var db = mongoose.connection;
-
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function() {
-//   // we're connected!
-//   console.log('connection to mongo database successful')
-// });
-
-// module.exports = db;
-
-
-
-
+module.exports = pool;
 
 //********************************************************
 //UNCOMMENT BELOW FOR SEQUELIZE

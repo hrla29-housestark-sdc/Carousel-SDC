@@ -1,15 +1,8 @@
 const router = require('express').Router();
 const controller = require('./controller');
 
-// Fetch or delete all data 
-// router.route('/allDocsMongo')
-//   .get(controller.mongodb.findOne)
-  //.post(controller.mongodb.postToProducts)
-  //.delete(controller.deleteAll)
-//   .delete(controller.deleteAll)
-
 router.route('/allDocsPgsql')
-  .get(controller.psql.test)
+  .get(controller.psql.findOne)
   //.post(controller.psql.postToProducts)
   //.delete(controller.deleteAll)
 

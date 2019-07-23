@@ -1,26 +1,3 @@
-// const mongoose = require('mongoose');
-// const db = require('./index');
-
-// // Product Description Schema
-// const productDescriptionSchema = new mongoose.Schema({
-//   ID: Number,
-//   productName: String,
-//   designer: String,
-//   price: Number,
-//   stars: Number,
-//   reviews: Number,
-//   description: String,
-//   fit: String,
-//   sizes: Array,
-//   colors: Array,
-//   imageUrlsColor1: Array,
-//   imageUrlsColor2: Array
-// });
-
-// // Connecting the Product Descriptions Schema to the database
-// const ProductDescription = mongoose.model('ProductDescriptions', productDescriptionSchema);
-
-// module.exports = ProductDescription;
 
 //**********************************************************************
 //UNCOMMENT BELOW FOR SEQUELIZE
@@ -47,19 +24,3 @@
 
 // module.exports = Product;
 
-const { Pool } = require('pg')
-const db = require('./index');
-
-const pool = new Pool({
-  user: 'ubuntu',
-  host: 'ec2-18-218-45-85.us-east-2.compute.amazonaws.com',
-  database: 'productdescription',
-  password: 'password',
-  port: 5432
-})
-
-pool.connect()
-  .then(() => console.log('connected to postgres'))
-  .catch(err => console.log('error connecting to db instance', err))
-
-module.exports = pool;
